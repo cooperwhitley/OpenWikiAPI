@@ -2,7 +2,7 @@
 
 ## About
 
-This is the back-end API that powers the WikiApp (change name and add link later). See below for relevant route tables.
+This is the back-end API that powers the <a href="https://github.com/cooperwhitley/wikiApp">open source wikiApp</a>. See below for relevant route tables.
 
 ## API
 
@@ -15,115 +15,44 @@ This is the back-end API that powers the WikiApp (change name and add link later
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
 
-#### POST /sign-up
+### Article
 
-Request:
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| GET   | `/articles`             | `articles#index`    |
+| POST   | `/articles`             | `articles#create`    |
+| GET  | `/articles/<article_id>` | `articles#show`  |
+| PATCH  | `/articles/<article_id>` | `articles#update`  |
+| DELETE | `/articles/<article_id>`        | `articles#delete`   |
 
-```sh
-curl --include --request POST http://localhost:8000/sign-up \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
-    }
-  }'
-```
+### Article Section
 
-```sh
-curl-scripts/sign-up.sh
-```
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/articles/<article_id>/sections`             | `section#create`    |
+| PATCH  | `/articles/<article_id>/sections/<section_id>` | `section#update`  |
+| DELETE | `/articles/<article_id>/sections/<section_id>`| `section#delete`   |
 
-Response:
+### Article InfoBox
 
-```md
-HTTP/1.1 201 Created
-Content-Type: application/json; charset=utf-8
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/articles/<article_id>/infobox`     | `infobox#create`    |
+| PATCH  | `/articles/<article_id>/infobox/<infobox_id>` | `infobox#update`  |
+| DELETE | `/articles/<article_id>/infobox/<infobox_id>`| `infobox#delete`   |
 
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
-}
-```
+### Article InfoBox Field
 
-#### POST /sign-in
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/articles/<article_id>/infobox/<infobox_id>/fields`     | `infofield#create`    |
+| PATCH  | `/articles/<article_id>/infobox/<infobox_id>/fields/<field_id>` | `infofield#update`  |
+| DELETE | `/articles/<article_id>/infobox/<infobox_id>/fields/<field_id>`| `infofield#delete`   |
 
-Request:
+### Photo
 
-```sh
-curl --include --request POST http://localhost:8000/sign-in \
-  --header "Content-Type: application/json" \
-  --data '{
-    "credentials": {
-      "email": "an@example.email",
-      "password": "an example password"
-    }
-  }'
-```
-
-```sh
-curl-scripts/sign-in.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email",
-    "token": "33ad6372f795694b333ec5f329ebeaaa"
-  }
-}
-```
-
-#### PATCH /change-password/
-
-Request:
-
-```sh
-curl --include --request PATCH http://localhost:8000/change-password/ \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "passwords": {
-      "old": "an example password",
-      "new": "super sekrit"
-    }
-  }'
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/change-password.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
-
-#### DELETE /sign-out/
-
-Request:
-
-```sh
-curl --include --request DELETE http://localhost:8000/sign-out/ \
-  --header "Authorization: Bearer $TOKEN"
-```
-
-```sh
-TOKEN=33ad6372f795694b333ec5f329ebeaaa curl-scripts/sign-out.sh
-```
-
-Response:
-
-```md
-HTTP/1.1 204 No Content
-```
+| Verb   | URI Pattern            | Controller#Action |
+|--------|------------------------|-------------------|
+| POST   | `/articles/<article_id>/<sections or infobox>/<_id>/photo`     | `photo#create`    |
+| PATCH  | `/articles/<article_id>/<sections or infobox>/<_id>/photo/<photo_id>` | `photo#update`  |
+| DELETE | `/articles/<article_id>/<sections or infobox>/<_id>/photo/<photo_id>`| `photo#delete`   |
