@@ -2,7 +2,7 @@
 
 ## About
 
-This is the back-end API that powers the <a href="https://github.com/cooperwhitley/wikiApp">OpenWiki</a>. See below for relevant route tables.
+This is the back-end API that powers the <a href="https://github.com/cooperwhitley/OpenWikiApp">OpenWiki</a>. See below for relevant route tables.
 
 ## API
 
