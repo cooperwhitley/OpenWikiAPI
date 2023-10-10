@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const userSchema = require('./user')
-
 const infoBoxSchema = require('./infoBox')
+const articleSectionSchema = require('./articleSection')
 
 const articleSchema = new mongoose.Schema(
 	{
@@ -29,6 +29,7 @@ const articleSchema = new mongoose.Schema(
 			type: String
 		},
 		infoBoxes: [infoBoxSchema],
+		sections: [articleSectionSchema]
 	},
 	{
 		timestamps: true,
