@@ -15,7 +15,7 @@ const router = express.Router()
 
 // INDEX
 // GET /articles
-router.get('/articles', requireToken, (req, res, next) => {
+router.get('/articles', (req, res, next) => {
 	Example.find()
 		.then((articles) => {
 			return articles.map((article) => article.toObject())
@@ -26,7 +26,7 @@ router.get('/articles', requireToken, (req, res, next) => {
 
 // SHOW
 // GET /articles/5a7db6c74d55bc51bdf39793
-router.get('/articles/:id', requireToken, (req, res, next) => {
+router.get('/articles/:id', (req, res, next) => {
 	Article.findById(req.params.id)
 		.then(handle404)
 		.then((article) => res.status(200).json({ article: article.toObject() }))
