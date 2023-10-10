@@ -5,6 +5,7 @@ const crypto = require('crypto')
 const passport = require('passport')
 // bcrypt docs: https://github.com/kelektiv/node.bcrypt.js
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 
 // see above for explanation of "salting", 10 rounds is recommended
 const bcryptSaltRounds = 10
@@ -15,7 +16,7 @@ const errors = require('../../lib/custom_errors')
 const BadParamsError = errors.BadParamsError
 const BadCredentialsError = errors.BadCredentialsError
 
-const User = require('../models/user')
+const User = mongoose.model('User', require('../models/user'))
 
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
