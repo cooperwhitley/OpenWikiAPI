@@ -31,4 +31,4 @@ const articleSectionSchema = new mongoose.Schema(
 	}
 )
 
-module.exports = mongoose.model('articleSection', articleSectionSchema)
+module.exports = mongoose.model('ArticleSection', articleSectionSchema)
