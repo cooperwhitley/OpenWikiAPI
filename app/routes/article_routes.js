@@ -16,7 +16,9 @@ const router = express.Router()
 // INDEX
 // GET /articles
 router.get('/articles', (req, res, next) => {
-	Example.find()
+	Article.find()
+		.populate('owner')
+		.populate('editors')
 		.then((articles) => {
 			return articles.map((article) => article.toObject())
 		})
@@ -28,6 +30,8 @@ router.get('/articles', (req, res, next) => {
 // GET /articles/5a7db6c74d55bc51bdf39793
 router.get('/articles/:id', (req, res, next) => {
 	Article.findById(req.params.id)
+		.populate('owner')
+		.populate('editors')
 		.then(handle404)
 		.then((article) => res.status(200).json({ article: article.toObject() }))
 		.catch(next)
