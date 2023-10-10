@@ -25,4 +25,4 @@ const infoBoxSchema = new mongoose.Schema(
 	}
 )
 
-module.exports = mongoose.model('infoBox', infoBoxSchema)
+module.exports = mongoose.model('InfoBox', infoBoxSchema)
