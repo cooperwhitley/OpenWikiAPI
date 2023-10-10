@@ -70,6 +70,7 @@ router.delete('/sections/:articleId/:sectionId', requireToken, removeBlanks, (re
 			const theSection = article.sections.id(sectionId)
 			requireOwnership(req, article)
 			theSection.deleteOne()
+			return article.save()
 		})
 		.then(() => res.sendStatus(204))
 		.catch(next)
