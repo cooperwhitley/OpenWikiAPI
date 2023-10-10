@@ -20,23 +20,23 @@ This is the back-end API that powers the <a href="https://github.com/cooperwhitl
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
 | GET   | `/articles`             | `articles#index`    |
+| DELETE | `/articles/<article_id>`        | `articles#delete`   |
+| PATCH  | `/articles/<article_id>` | `articles#update`  |
 | POST   | `/articles`             | `articles#create`    |
 | GET  | `/articles/<article_id>` | `articles#show`  |
-| PATCH  | `/articles/<article_id>` | `articles#update`  |
-| DELETE | `/articles/<article_id>`        | `articles#delete`   |
 
 ### Article Section
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
-| POST   | `/articles/<article_id>/sections`             | `section#create`    |
-| PATCH  | `/articles/<article_id>/sections/<section_id>` | `section#update`  |
-| DELETE | `/articles/<article_id>/sections/<section_id>`| `section#delete`   |
+| DELETE | `/sections/<article_id>/<section_id>`| `section#delete`   |
+| PATCH  | `/sections/<article_id>/<section_id>` | `section#update`  |
+| POST   | `/sections/<article_id>`             | `section#create`    |
 
 ### Article InfoBox Field
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
-| POST   | `/articles/<article_id>/fields`     | `infofield#create`    |
-| PATCH  | `/articles/<article_id>/fields/<field_id>` | `infofield#update`  |
-| DELETE | `/articles/<article_id>/fields/<field_id>`| `infofield#delete`   |
+| DELETE | `/articles/<article_id>/<infoBox_id>`| `infoBox#delete`   |
+| PATCH  | `/infoboxes/<article_id>/<infoBox_id>` | `infoBox#update`  |
+| POST   | `/infoboxes/<article_id>`     | `infoBox#create`    |
