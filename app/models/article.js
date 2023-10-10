@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./user')
 const infoBoxSchema = require('./infoBox')
 const articleSectionSchema = require('./articleSection')
 
@@ -19,7 +18,11 @@ const articleSchema = new mongoose.Schema(
 			ref: 'User',
 			required: true,
 		},
-		editors: [userSchema],
+		editors: [{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+			required: true,
+		}],
 		publicallyEditable: {
 			type: Boolean,
 			required: true,
