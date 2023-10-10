@@ -33,26 +33,10 @@ This is the back-end API that powers the <a href="https://github.com/cooperwhitl
 | PATCH  | `/articles/<article_id>/sections/<section_id>` | `section#update`  |
 | DELETE | `/articles/<article_id>/sections/<section_id>`| `section#delete`   |
 
-### Article InfoBox
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/articles/<article_id>/infobox`     | `infobox#create`    |
-| PATCH  | `/articles/<article_id>/infobox/<infobox_id>` | `infobox#update`  |
-| DELETE | `/articles/<article_id>/infobox/<infobox_id>`| `infobox#delete`   |
-
 ### Article InfoBox Field
 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
-| POST   | `/articles/<article_id>/infobox/<infobox_id>/fields`     | `infofield#create`    |
-| PATCH  | `/articles/<article_id>/infobox/<infobox_id>/fields/<field_id>` | `infofield#update`  |
-| DELETE | `/articles/<article_id>/infobox/<infobox_id>/fields/<field_id>`| `infofield#delete`   |
-
-### Photo
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| POST   | `/articles/<article_id>/<sections or infobox>/<_id>/photo`     | `photo#create`    |
-| PATCH  | `/articles/<article_id>/<sections or infobox>/<_id>/photo/<photo_id>` | `photo#update`  |
-| DELETE | `/articles/<article_id>/<sections or infobox>/<_id>/photo/<photo_id>`| `photo#delete`   |
+| POST   | `/articles/<article_id>/fields`     | `infofield#create`    |
+| PATCH  | `/articles/<article_id>/fields/<field_id>` | `infofield#update`  |
+| DELETE | `/articles/<article_id>/fields/<field_id>`| `infofield#delete`   |
