@@ -3,6 +3,7 @@ const passport = require('passport')
 const Article = require('../models/article')
 const ArticleSection = require('../models/articleSection')
 
+const mongoose = require('mongoose')
 const customErrors = require('../../lib/custom_errors')
 const handle404 = customErrors.handle404
 const requireOwnership = customErrors.requireOwnership
@@ -15,6 +16,8 @@ const router = express.Router()
 router.post('/sections/:articleId', requireToken, removeBlanks, (req, res, next) => {
 	const section = req.body.articleSection
 	const articleId = req.params.articleId
+
+	section.owner = req.user.id
 
 	Article.findById(articleId)
 		.then(handle404)
