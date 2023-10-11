@@ -16,6 +16,8 @@ router.post('/infoboxes/:articleId', requireToken, removeBlanks, (req, res, next
 	const infoBox = req.body.infoBox
 	const articleId = req.params.articleId
 
+	infoBox.owner = req.user.id
+
 	Article.findById(articleId)
 		.then(handle404)
 		.then((article) => {
@@ -25,7 +27,7 @@ router.post('/infoboxes/:articleId', requireToken, removeBlanks, (req, res, next
 			if (!article.editors.includes(req.user.id)) {
 				article.editors.push(req.user.id)
 			}
-			article.infoboxes.push(infoBox)
+			article.infoBoxes.push(infoBox)
 			return article.save()
 		})
 		.then(article => res.status(201).json({ article:article }))
@@ -69,6 +71,7 @@ router.delete('/infoboxes/:articleId/:infoBoxId', requireToken, removeBlanks, (r
 				requireOwnership(req, article)
 			}
 			theInfoBox.deleteOne()
+			return article.save()
 		})
 		.then(() => res.sendStatus(204))
 		.catch(next)
