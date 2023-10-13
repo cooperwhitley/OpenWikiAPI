@@ -42,9 +42,9 @@ const articleSchema = new mongoose.Schema(
 )
 
 articleSchema.virtual('editorList').get(function () {
-	if (this.editors.length === 1 && this.owner.name) {
+	if (this.editors.length === 0 && this.owner.name) {
 		return `edited by: ${this.owner.name}`
-	} else if (this.editors.length === 1) {
+	} else if (this.editors.length === 0) {
 		return `edited by: ${this.owner.userName}`
 	}
 	let editorNames = []
